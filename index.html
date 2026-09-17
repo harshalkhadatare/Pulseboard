@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pulseboard turns the things on your mind into a calm, visual action board.">
+  <title>Pulseboard — Clear the mental noise</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Pulseboard home"><span class="brand-dot"></span>pulseboard</a>
+    <div class="header-actions">
+      <span id="dateLabel"></span>
+      <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">◐</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow"><span></span> YOUR DAY, IN ONE GLANCE</div>
+      <h1>Less noise.<br><em>More momentum.</em></h1>
+      <p class="hero-copy">Drop the things circling your head onto one calm board. Pick what matters, move it forward, and let the rest wait.</p>
+      <button class="primary" id="addTopBtn"><span>＋</span> Add a thought <kbd>N</kbd></button>
+    </section>
+
+    <section class="board-wrap" aria-label="Your pulseboard">
+      <div class="board-head">
+        <div>
+          <span class="section-label">TODAY'S PULSE</span>
+          <h2 id="summaryTitle">A clean slate.</h2>
+        </div>
+        <div class="progress-box">
+          <div class="progress-ring" id="progressRing"><span id="progressValue">0%</span></div>
+          <div><strong id="progressText">0 of 0</strong><small>moved forward</small></div>
+        </div>
+      </div>
+
+      <div class="input-row">
+        <input id="thoughtInput" type="text" maxlength="120" placeholder="What's taking up space in your head?" autocomplete="off">
+        <select id="energySelect" aria-label="Energy required">
+          <option value="low">Low energy</option>
+          <option value="medium" selected>Some energy</option>
+          <option value="high">Deep focus</option>
+        </select>
+        <button class="add-btn" id="addBtn">Add</button>
+      </div>
+
+      <div class="filters" role="group" aria-label="Filter thoughts">
+        <button class="filter active" data-filter="all">All <span id="allCount">0</span></button>
+        <button class="filter" data-filter="open">Open <span id="openCount">0</span></button>
+        <button class="filter" data-filter="done">Moved <span id="doneCount">0</span></button>
+      </div>
+
+      <div id="cards" class="cards" aria-live="polite"></div>
+
+      <div id="empty" class="empty">
+        <div class="empty-orbit"><span>✦</span></div>
+        <h3>Your board is quiet.</h3>
+        <p>Add one thing. It doesn't need to be important.</p>
+        <button class="text-btn" id="emptyAdd">Add your first thought →</button>
+      </div>
+    </section>
+
+    <section class="tiny-tip">
+      <div class="tip-mark">✦</div>
+      <div><strong>Small rule</strong><p>Don't organize everything. Just decide what deserves your attention next.</p></div>
+    </section>
+  </main>
+
+  <footer>
+    <span>pulseboard</span>
+    <span>Everything stays in your browser.</span>
+  </footer>
+
+  <dialog id="welcome">
+    <div class="dialog-inner">
+      <button class="close" id="closeWelcome" aria-label="Close">×</button>
+      <span class="dialog-kicker">A 30-SECOND RESET</span>
+      <h2>Put the mental tabs down.</h2>
+      <p>Pulseboard is deliberately simple: capture what's on your mind, choose how much energy it needs, then move one thing forward.</p>
+      <button class="primary wide" id="startBtn">Let's begin <span>→</span></button>
+    </div>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
